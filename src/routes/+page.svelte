@@ -1,7 +1,12 @@
 <script lang="ts">
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcomeFallback from '$lib/images/svelte-welcome.png';
+	import CoreReqBox from '$lib/components/CoreReqBox.svelte';
+	import MajorReqBox from '$lib/components/MajorReqBox.svelte';
+
+	let classData: Record<string, [string | number, string | number]> = {
+		"Class 1" : [3, 5],
+		"Class 2" : [4, 9]
+	}
+
 </script>
 
 <svelte:head>
@@ -10,22 +15,13 @@
 </svelte:head>
 
 <section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcomeFallback} alt="Welcome" />
-			</picture>
-		</span>
 
-		to your new<br />SvelteKit app
-	</h1>
+	<h1>Schedule Planner</h1>
 
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
+	<div class="flex gap-2">
+		<CoreReqBox />
+		<MajorReqBox majorName="Math" data={classData} />
+	</div>
 </section>
 
 <style>

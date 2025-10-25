@@ -2,20 +2,20 @@
 	import Header from './Header.svelte';
 	import '../app.css';
 	
-	
+	let { children } = $props();
 </script>
 
 <div class="app">
 	<Header />
 
 	<main>
-		<slot />
+		{@render children()}
 	</main>
 
 	<footer>
-		<p>
+		<!-- <p>
 			visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to learn about SvelteKit
-		</p>
+		</p> -->
 	</footer>
 </div>
 
