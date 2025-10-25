@@ -6,7 +6,7 @@
 </script>
 
 <main>
-  <div class="border-2 rounded p-2">
+  <div class="border rounded p-2">
     <div class="w-full pt-1 pb-2">
       <h2 class="text-center">Core Requirements</h2>
     </div>
