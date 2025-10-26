@@ -18,5 +18,4 @@
 	<p>
 		Connor Moquin and Colin McKay founded CJM Project. This is our second year participating in Hack the Heights.
 	</p>
-	<img src="/cjm.JPEG" alt="big motion" class="rounded shadow-md max-w-sm mx-auto mt-6" />
 </div>

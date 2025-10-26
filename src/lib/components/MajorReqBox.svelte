@@ -1,5 +1,5 @@
 <script lang="ts">
-  let { major_name, major_data, credit_map, taken } = $props();
+  let { major_name, major_data, credit_map, taken, not_taken = $bindable() } = $props();
 
   // Gets credit value for courses with multiple options
   function getCredits(course_id: string) : number {
@@ -18,14 +18,19 @@
   }
 
   function hasTaken(course_id: string) : boolean {
+    let not_done = [];
+    let current_not;
     if (course_id.includes('/')) {
       const parts = course_id.split('/').map(p => p.trim());
       for (const p of parts) {
         if (taken.has(p)) return true;
       }
+      current_not = parts[0];
     } else {
       if (taken.has(course_id)) return true;
+      current_not = course_id;
     }
+    not_done.push(current_not);
     return false;
   }
 

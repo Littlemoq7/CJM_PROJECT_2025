@@ -34,6 +34,7 @@
 
 	let majors: Set<string> = $state(new Set(["Math BS", "Sociology", "Computer Science BA"]));
 	let course_ids_taken: Set<string> = $state(new Set());
+	let not_taken: Array<string> = $state([]);
 
 	function getCourseIds() {
 		let courses_taken = [...year1courses[0], ...year1courses[1], ...year2courses[0], ...year2courses[1], ...year3courses[0], ...year3courses[1], ...year4courses[0], ...year4courses[1]];
@@ -44,7 +45,11 @@
 		})
 		course_ids_taken = course_ids;
 		console.log(course_ids_taken);
-		savePlan()
+		savePlan();
+	}
+
+	function fillSchedule() {
+
 	}
 
 	const STORAGE_KEY = "four_year_plan";
@@ -101,14 +106,24 @@
 
 <div class="w-full h-full">
 
-	<div class="w-[93%] flex justify-between mx-auto">
-		<div>
-			<h2>Requirements and Four Year Plan</h2>
-		</div>
-		<div class="flex">
+	<div class="w-full">
+		<div class="flex justify-end">
 			<div class="flex items-center">
-				<button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" onclick={getCourseIds}>
-					Update Requirements
+				<button
+					type="button"
+					onclick={getCourseIds}
+					class="px-3 py-1.5 bg-gray-100 text-gray-800 border border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 transition"
+					aria-label="Update requirements"
+				>
+					Update requirements
+				</button>
+				<button
+					type="button"
+					onclick={fillSchedule}
+					class="px-3 py-1.5 bg-gray-100 text-gray-800 border border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 transition"
+					aria-label="Fill schedule"
+				>
+					Fill Schedule
 				</button>
 			</div>
 		</div>
@@ -125,7 +140,7 @@
 				<CoreReqBox taken={course_ids_taken} core_map={data.core_map}/>
 				{#each majors as name}
 					{#if major_programs.has(name)}
-						<MajorReqBox major_name={name} major_data={data.majors[name]} credit_map={data.credit_map} taken={course_ids_taken}/>
+						<MajorReqBox major_name={name} major_data={data.majors[name]} credit_map={data.credit_map} taken={course_ids_taken} not_taken={not_taken}/>
 					{/if}
 				{/each}
 			</div>
