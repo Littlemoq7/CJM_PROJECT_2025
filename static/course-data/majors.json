@@ -13,7 +13,7 @@
     "corequisites": ["MATH2210","MATH1101"],
     "corequisite_credits": 12
  },
- "Sociology Major": {
+ "Sociology": {
     "core_courses":["SOCY1001/SOCY1002","SOCY2200","SOCY2215","SOCY2210"],
     "electives": ["SOCY2225","SOCY2600","SOCY2066","SOCY1078","SOCY1072","SOCY1039","SOCY1133","SOCY3310","SOCY3316","SOCY3355","SOCY3358","SOCY3359","SOCY3375", "SOCY3400","SOCY3581","SOCY3655","SOCY4901","SOCY5419","SOCY6670"],
     "elective_credits": 18,

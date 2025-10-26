@@ -29,6 +29,18 @@
     return false;
   }
 
+  function checkExtraCredits(section: string) : number {
+    let count = 0;
+    let valid_courses = new Set(major_data[section]);
+    taken.forEach((course_id: string) => {
+      if (valid_courses.has(course_id)) {
+        let num = credit_map[course_id];
+        if (num) count += num;
+      }
+    })
+    return count;
+  }
+
 </script>
 
 <main>
@@ -54,6 +66,16 @@
                 <td class="border px-2 py-1">{hasTaken(course) ? "Yes" : "No"}</td>
               </tr>
             {/each}
+            <tr>
+              <td class="border px-2 py-1">{"Electives"}</td>
+              <td class="border px-2 py-1">{major_data["elective_credits"]}</td>
+              <td class="border px-2 py-1">{checkExtraCredits("electives")}</td>
+            </tr>
+            <tr>
+              <td class="border px-2 py-1">{"Co-requisites"}</td>
+              <td class="border px-2 py-1">{major_data["corequisite_credits"]}</td>
+              <td class="border px-2 py-1">{checkExtraCredits("corequisites")}</td>
+            </tr>
           {/if}
         </tbody>
       </table>

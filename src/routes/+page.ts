@@ -29,8 +29,8 @@ export const load: PageLoad = async ({ fetch }) => {
     if (course["credits"] !== undefined) {
       credit_map[course["id"]] = course["credits"];
     }
-    if (course["core-attribute"] !== undefined) {
-      core_map[title] = course["core-attribute"]
+    if (course["core_attribute"] !== undefined) {
+      core_map[course["id"]] = course["core_attribute"];
     }
   });
 

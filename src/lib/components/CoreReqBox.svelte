@@ -1,18 +1,30 @@
 <script lang="ts">
-  let data = {
-    "Arts" : [1, 0],
-    "Cultural Diversity" : [1, 0],
-   "History I" : [1, 0],
-   "History II" : [1, 0],
-   "Literature" : [1, 0],
-   "Mathematics" : [1, 0],
-   "Natural Science" : [2, 0],
-   "Philosophy" : [2, 0],
-   "Social Science" : [2, 0],
-   "Theology" : [2, 0],
-   "Writing" : [1, 0],
+
+  let { taken, core_map } = $props();
+
+  let data: Record<string, number> = {
+    "Arts" : 1,
+    "Cultural Diversity" : 1,
+    "History I" : 1,
+    "History II" : 1,
+    "Literature" : 1,
+    "Mathematics" : 1,
+    "Natural Science" : 2,
+    "Philosophy" : 2,
+    "Social Science" : 2,
+    "Theology" : 2,
+    "Writing" : 1
   }
-  
+
+  function checkCore(req: string) : number {
+    let count = 0;
+    taken.forEach((course_id: string) => {
+      console.log(core_map[course_id]);
+      if (core_map[course_id].includes(req)) count += 1;
+    })
+    return Math.min(count, data[req]);
+  }
+
 </script>
 
 <main>
@@ -30,11 +42,11 @@
           </tr>
         </thead>
         <tbody>
-          {#each Object.entries(data) as [key, value]}
+          {#each Object.entries(data) as [subject, num]}
             <tr>
-              <td class="border px-2 py-1">{key}</td>
-              <td class="border px-2 py-1">{value[0]}</td>
-              <td class="border px-2 py-1">{value[1]}</td>
+              <td class="border px-2 py-1">{subject}</td>
+              <td class="border px-2 py-1">{num}</td>
+              <td class="border px-2 py-1">{checkCore(subject)}</td>
             </tr>
           {/each}
         </tbody>
