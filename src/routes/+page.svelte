@@ -195,6 +195,7 @@
 					}}
 					class="px-3 py-1.5 bg-gray-100 text-gray-800 border border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 transition"
 					aria-label="Search"
+					style= "background-color: var(--color-theme-1); color: var(--color-bg-0)"
 				>
 					Add
 				</button>
@@ -226,8 +227,8 @@
 
 		<!-- Contains requirement boxes -->
 		<div class="w-[200px] md:w-[250px] lg:w-[350px]">
-			<div class="w-full border">
-				<h3 class="text-center">My Requirements</h3>
+			<div class="w-full border border-transparent">
+  				<h3 class="text-center font-bold text-xl">My Requirements</h3>
 			</div>
 			<div class="flex flex-col gap-2 overflow-y-auto max-h-[80vh]">
 				<CoreReqBox taken={course_ids_taken} core_map={data.core_map}/>
@@ -241,8 +242,8 @@
 
 		<!-- Contains four year plan -->
 		<div class="rounded w-[300px] md:w-[600px] lg:w-[900px]">
-			<div class="w-full border">
-				<h3 class="text-center">Course Planner</h3>
+			<div class="w-full border border-transparent">
+				<h3 class="text-center font-bold text-xl">Course Planner</h3>
 			</div>
 
 			<div class="flex flex-col gap-4 overflow-y-auto max-h-[80vh]">
