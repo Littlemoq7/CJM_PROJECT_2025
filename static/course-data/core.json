@@ -1,0 +1,88 @@
+[
+    { 
+        "id": "arts", 
+        "label": "Arts", 
+        "min_courses": 1, 
+        "filters": { 
+            "core_attribute": "Arts" 
+        } 
+    },
+    { 
+        "id": "cultural-diversity", 
+        "label": "Cultural Diversity", 
+        "min_courses": 1, "filters": { 
+            "core_attribute": "Cultural Diversity" 
+        } 
+    },
+    { 
+        "id": "history i", 
+        "label": "History", 
+        "min_courses": 1, 
+        "filters": { 
+            "core_attribute": "History I" 
+        } 
+    },
+    { 
+        "id": "history ii", 
+        "label": "History", 
+        "min_courses": 1, 
+        "filters": { 
+            "core_attribute": "History II" 
+        } 
+    },
+    { 
+        "id": "literature", 
+        "label": "Literature", 
+        "min_courses": 1, 
+        "filters": { 
+            "core_attribute": "Literature" 
+        } 
+    },
+    { 
+        "id": "mathematics",
+        "label": "Mathematics", 
+        "min_courses": 1, 
+        "filters": { 
+            "core_attribute": "Mathematics" 
+        } 
+    },
+    { 
+        "id": "natural-science", 
+        "label": "Natural Science", 
+        "min_courses": 2, 
+        "filters": { 
+            "core_attribute": "Natural Science" 
+        }
+    },
+    { 
+        "id": "philosophy", 
+        "label": "Philosophy", 
+        "min_courses": 2, 
+        "filters": { "core_attribute": "Philosophy" 
+        } 
+    },
+    { 
+        "id": "social-science", 
+        "label": "Social Sciences", 
+        "min_courses": 2, 
+        "filters": { 
+            "core_attribute": "Social Sciences" 
+        } 
+    },
+    { 
+        "id": "theology", 
+        "label": "Theology", 
+        "min_courses": 2, 
+        "filters": { 
+            "core_attribute": "Theology" 
+        } 
+    },
+    { 
+        "id": "writing", 
+        "label": "Writing", 
+        "min_courses": 1, 
+        "filters": { 
+            "core_attribute": "Writing" 
+        } 
+    }
+]

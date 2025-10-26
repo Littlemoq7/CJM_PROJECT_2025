@@ -3420,6 +3420,249 @@
     "core_attribute": "None"
   },
   {
+    "id": "EALC1121",
+    "subject": "EALC",
+    "number": "1121",
+    "title": "Elementary Chinese I",
+    "credits": 3,
+    "prerequisites_raw": "None",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC1123",
+    "subject": "EALC",
+    "number": "1123",
+    "title": "Elementary Chinese Practicum",
+    "credits": 3,
+    "prerequisites_raw": "None",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC1221",
+    "subject": "EALC",
+    "number": "1221",
+    "title": "Elementary Japanese I",
+    "credits": 4,
+    "prerequisites_raw": "None",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC1311",
+    "subject": "EALC",
+    "number": "1311",
+    "title": "Elementary Korean I",
+    "credits": 3,
+    "prerequisites_raw": "None",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC1314",
+    "subject": "EALC",
+    "number": "1314",
+    "title": "Accelerated Elementary Korean",
+    "credits": 3,
+    "prerequisites_raw": "None",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC2063",
+    "subject": "EALC",
+    "number": "2063",
+    "title": "Wisdom and Philosophy of the Far East",
+    "credits": 3,
+    "prerequisites_raw": "None",
+    "core_attribute": "Cultural Diversity"
+  },
+  {
+    "id": "EALC2121",
+    "subject": "EALC",
+    "number": "2121",
+    "title": "Intermediate Chinese I",
+    "credits": 3,
+    "prerequisites_raw": "EALC1122 or equivalent",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC2162",
+    "subject": "EALC",
+    "number": "2162",
+    "title": "Gods and Heroes in Chinese Literature (in translation)",
+    "credits": 3,
+    "prerequisites_raw": "None",
+    "core_attribute": "Cultural Diversity"
+  },
+  {
+    "id": "EALC2221",
+    "subject": "EALC",
+    "number": "2221",
+    "title": "Intermediate Japanese I",
+    "credits": 4,
+    "prerequisites_raw": "EALC1222 or equivalent",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC2311",
+    "subject": "EALC",
+    "number": "2311",
+    "title": "Intermediate Korean I",
+    "credits": 3,
+    "prerequisites_raw": "EALC1312 or equivalent",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC2330",
+    "subject": "EALC",
+    "number": "2330",
+    "title": "Contemporary Korean Literature and Culture",
+    "credits": 3,
+    "prerequisites_raw": "None",
+    "core_attribute": "Literature"
+  },
+  {
+    "id": "EALC3111",
+    "subject": "EALC",
+    "number": "3111",
+    "title": "Advanced Chinese I",
+    "credits": 3,
+    "prerequisites_raw": "EALC2122 or equivalent",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC3221",
+    "subject": "EALC",
+    "number": "3221",
+    "title": "Advanced Japanese I",
+    "credits": 3,
+    "prerequisites_raw": "EALC2222 or equivalent",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC3311",
+    "subject": "EALC",
+    "number": "3311",
+    "title": "Advanced Korean I",
+    "credits": 3,
+    "prerequisites_raw": "EALC2312 or EALC2314 or equivalent proficiency",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC1122",
+    "subject": "EALC",
+    "number": "1122",
+    "title": "Elementary Chinese II",
+    "credits": 3,
+    "prerequisites_raw": "EALC1121 or equivalent",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC1124",
+    "subject": "EALC",
+    "number": "1124",
+    "title": "Elementary Chinese Practicum",
+    "credits": 3,
+    "prerequisites_raw": "None",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC1222",
+    "subject": "EALC",
+    "number": "1222",
+    "title": "Elementary Japanese II",
+    "credits": 4,
+    "prerequisites_raw": "EALC1221 or equivalent",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC1312",
+    "subject": "EALC",
+    "number": "1312",
+    "title": "Elementary Korean II",
+    "credits": 3,
+    "prerequisites_raw": "EALC1311 or equivalent",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC2061",
+    "subject": "EALC",
+    "number": "2061",
+    "title": "Far Eastern Literary Masterpieces",
+    "credits": 3,
+    "prerequisites_raw": "None",
+    "core_attribute": "Cultural Diversity"
+  },
+  {
+    "id": "EALC2122",
+    "subject": "EALC",
+    "number": "2122",
+    "title": "Intermediate Chinese II",
+    "credits": 3,
+    "prerequisites_raw": "EALC2121 or equivalent",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC2161",
+    "subject": "EALC",
+    "number": "2161",
+    "title": "Ghosts and Strange Happenings in Chinese Literature",
+    "credits": 3,
+    "prerequisites_raw": "None",
+    "core_attribute": "Cultural Diversity"
+  },
+  {
+    "id": "EALC2222",
+    "subject": "EALC",
+    "number": "2222",
+    "title": "Intermediate Japanese II",
+    "credits": 4,
+    "prerequisites_raw": "EALC2221 or equivalent",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC2312",
+    "subject": "EALC",
+    "number": "2312",
+    "title": "Intermediate Korean II",
+    "credits": 3,
+    "prerequisites_raw": "EALC2311 or equivalent",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC2314",
+    "subject": "EALC",
+    "number": "2314",
+    "title": "Accelerated Intermediate Korean",
+    "credits": 3,
+    "prerequisites_raw": "None",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC3112",
+    "subject": "EALC",
+    "number": "3112",
+    "title": "Advanced Chinese II",
+    "credits": 3,
+    "prerequisites_raw": "EALC4121 or equivalent",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC3222",
+    "subject": "EALC",
+    "number": "3222",
+    "title": "Advanced Japanese II",
+    "credits": 3,
+    "prerequisites_raw": "EALC3221 or equivalent",
+    "core_attribute": "None"
+  },
+  {
+    "id": "EALC3312",
+    "subject": "EALC",
+    "number": "3312",
+    "title": "Advanced Korean II",
+    "credits": 3,
+    "prerequisites_raw": "EALC4311 or equivalent proficiency",
+    "core_attribute": "None"
+  },
+  {
     "id": "EESC1120",
     "subject": "EESC",
     "number": "1120",
