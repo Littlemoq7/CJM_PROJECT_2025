@@ -3,6 +3,7 @@
     "Math" : [1, 1],
     "History" : [2, 1]
   }
+  
 </script>
 
 <main>
