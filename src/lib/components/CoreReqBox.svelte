@@ -20,7 +20,6 @@
   function checkCore(req: string) : number {
     let count = 0;
     taken.forEach((course_id: string) => {
-      console.log(core_map[course_id]);
       if (core_map[course_id].includes(req)) count += 1;
     })
     return Math.min(count, data[req]);

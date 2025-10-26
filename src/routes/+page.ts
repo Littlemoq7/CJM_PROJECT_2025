@@ -20,11 +20,13 @@ export const load: PageLoad = async ({ fetch }) => {
   let course_map: Record<string, any> = {};
   let credit_map: Record<string, any> = {};
   let core_map: Record<string, any> = {};
+  let course_map_rev: Record<string, any> = {};
 
   courses.forEach((course: any) => {
     const title = course["title"];
     if (typeof title === "string" && course["id"] !== undefined) {
       course_map[title] = course["id"];
+      course_map_rev[course["id"]] = title;
     }
     if (course["credits"] !== undefined) {
       credit_map[course["id"]] = course["credits"];
@@ -34,5 +36,5 @@ export const load: PageLoad = async ({ fetch }) => {
     }
   });
 
-	return { courses, majors, course_map, credit_map, core_map };
+	return { courses, majors, course_map, course_map_rev, credit_map, core_map };
 };

@@ -32,9 +32,9 @@
 	const major_programs = new Set(["Math BS", "Computer Science BA", "Sociology"]);
 	const courseCatalog: Array<string> = course_list_full;
 
-	let majors: Set<string> = $state(new Set(["Math BS", "Sociology", "Computer Science BA"]));
+	let majors: Set<string> = $state(new Set(["Math BS", "Sociology"]));
 	let course_ids_taken: Set<string> = $state(new Set());
-	let not_taken: Array<string> = $state([]);
+	let not_taken = $state(new Map());
 
 	function getCourseIds() {
 		let courses_taken = [...year1courses[0], ...year1courses[1], ...year2courses[0], ...year2courses[1], ...year3courses[0], ...year3courses[1], ...year4courses[0], ...year4courses[1]];
@@ -44,12 +44,77 @@
 			if (id) course_ids.add(id);
 		})
 		course_ids_taken = course_ids;
-		console.log(course_ids_taken);
 		savePlan();
 	}
 
-	function fillSchedule() {
+	// Fills slot based on index, returns if successful
+	function fillSlot(index: number, course_id: string) : boolean {
+		// normalize course_id: if it contains a slash, take everything before the first slash
+		course_id = course_id.trim();
+		const slashIdx = course_id.indexOf('/');
+		if (slashIdx !== -1) {
+			course_id = course_id.slice(0, slashIdx);
+		}
+		let course_name = data.course_map_rev[course_id];
+		if (!course_name) return false;
 
+		// Year 1 (0–9)
+		if (index >= 0 && index < 5) {
+			if (year1courses[0][index] !== "") year1courses[0][index] = course_name;
+			return true;
+		} else if (index >= 5 && index < 10) {
+			if (year1courses[1][index] !== "") year1courses[1][index - 5] = course_name;
+			return true;
+		// Year 2 (10–19)
+		} else if (index >= 10 && index < 15) {
+			if (year2courses[0][index] !== "") year2courses[0][index - 10] = course_name;
+			return true;
+		} else if (index >= 15 && index < 20) {
+			if (year2courses[1][index] !== "") year2courses[1][index - 15] = course_name;
+			return true;
+		// Year 3 (20–29)
+		} else if (index >= 20 && index < 25) {
+			if (year3courses[0][index] !== "") year3courses[0][index - 20] = course_name;
+			return true;
+		} else if (index >= 25 && index < 30) {
+			if (year3courses[1][index] !== "") year3courses[1][index - 25] = course_name;
+			return true;
+		// Year 4 (30–39)
+		} else if (index >= 30 && index < 35) {
+			if (year4courses[0][index] !== "") year4courses[0][index - 30] = course_name;
+			return true;
+		} else if (index >= 35 && index < 40) {
+			if (year1courses[1][index] !== "") year4courses[1][index - 35] = course_name;
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	// Fills not taken classes into schedule
+	function fillSchedule () {
+		// Convert map entries into arrays
+		const lists = Array.from(not_taken.values()).map((arr) => [...arr]);
+
+		const result: string[] = [];
+		let added = true;
+
+		// Continue looping while at least one course remains
+		while (added) {
+			added = false;
+			for (const list of lists) {
+				if (list.length > 0) {
+					result.push(list.shift()!); // take one from each major
+					added = true;
+				}
+			}
+		}
+
+		// Fill all slots sequentially
+		for (let index = 0; index < 40 && result.length > 0; index++) {
+			const course = result.shift()!;
+			fillSlot(index, course);
+		}
 	}
 
 	const STORAGE_KEY = "four_year_plan";
@@ -93,6 +158,8 @@
 		}
 	}
 
+	let major_input: string | undefined = $state();
+
 	onMount(() => {
 		loadPlan();
 		getCourseIds();
@@ -107,7 +174,31 @@
 <div class="w-full h-full">
 
 	<div class="w-full mb-4">
-		<div class="flex justify-end">
+		<div class="flex justify-between">
+			<div class="flex items-center">
+				<input
+					id="left-input"
+					type="text"
+					bind:value={major_input}
+					placeholder="Add major or minor"
+					class="px-3 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-300 mr-2"
+					aria-label="Course search"
+				/>
+				<button
+					type="button"
+					onclick={() => {
+						if (major_input && major_programs.has(major_input)) {
+							majors.add(major_input);
+							majors = new Set(majors);
+							major_input = undefined;
+						}
+					}}
+					class="px-3 py-1.5 bg-gray-100 text-gray-800 border border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 transition"
+					aria-label="Search"
+				>
+					Add
+				</button>
+			</div>
 			<div class="flex items-center">
 				<button
 					type="button"
@@ -120,7 +211,7 @@
 				<button
 					type="button"
 					onclick={fillSchedule}
-					class="px-3 py-1.5 bg-gray-100 text-gray-800 border border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 transition"
+					class="px-3 py-1.5 bg-gray-100 text-gray-800 border border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 transition ml-2"
 					aria-label="Fill schedule"
 				>
 					Fill Schedule

@@ -26,11 +26,22 @@
   }
 
   $effect(() => {
-    if (major_data && major_data["core_courses"]) {
-      not_taken = major_data["core_courses"].filter((course: string) => !hasTaken(course));
-      console.log(not_taken);
+    if (major_data?.core_courses) {
+      const new_not_taken = major_data.core_courses.filter(
+        (course: string) => !hasTaken(course)
+      );
+
+      const merged = [
+        ...(not_taken.get(major_name) || []),
+        ...new_not_taken.filter((c: any) => !(not_taken.get(major_name) || []).includes(c))
+      ];
+
+      const cleaned = merged.filter((c) => !hasTaken(c));
+
+      not_taken.set(major_name, cleaned);
     }
   });
+
 
   // Checks for coreqs and electives
   function checkExtraCredits(section: string) : number {
