@@ -9936,15 +9936,6 @@
     "core_attribute": "None"
   },
   {
-    "id": "MATH8807",
-    "subject": "MATH",
-    "number": "8807",
-    "title": "Algebra II",
-    "credits": 3,
-    "prerequisites_raw": "None",
-    "core_attribute": "None"
-  },
-  {
     "id": "MATH8809",
     "subject": "MATH",
     "number": "8809",

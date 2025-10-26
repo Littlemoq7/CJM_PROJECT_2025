@@ -73,7 +73,7 @@
 				<h3 class="text-center">My Requirements</h3>
 			</div>
 			<div class="flex flex-col gap-2 overflow-y-auto max-h-[80vh]">
-				<CoreReqBox />
+				<CoreReqBox taken={course_ids_taken} core_map={data.core_map}/>
 				{#each majors as name}
 					{#if major_programs.has(name)}
 						<MajorReqBox major_name={name} major_data={data.majors[name]} credit_map={data.credit_map} taken={course_ids_taken}/>
