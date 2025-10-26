@@ -1,5 +1,5 @@
-<script>
-  let { yearNum, courses = $bindable() } = $props();
+<script lang="ts">
+  let { yearNum, courses = $bindable(), courseCatalog } = $props();
 	let semesters = ["Fall", "Spring"];
 </script>
 
@@ -19,13 +19,14 @@
 			{#each semesters as sem, r}
 				<tr>
 					<td class="border px-2 py-1 font-medium">{sem}</td>
-					{#each courses[r] as course, c}
+					{#each courses[r] as sem, c}
 						<td class="border px-1 py-1">
 							<input
 								class="w-full p-1 rounded border outline-none focus:ring-2 focus:ring-amber-400"
 								type="text"
 								bind:value={courses[r][c]}
 								placeholder="Course"
+                list="courseCatalog"
 							/>
 						</td>
 					{/each}
@@ -33,4 +34,10 @@
 			{/each}
 		</tbody>
 	</table>  
+
+  <datalist id="courseCatalog">
+    {#each courseCatalog as course}
+      <option value={course}></option>
+    {/each}
+  </datalist>
 </main>
