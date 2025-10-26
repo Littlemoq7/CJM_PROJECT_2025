@@ -28,25 +28,20 @@
 	]);
 
 	const major_programs = new Set(["Math BS", "Computer Science BA", "Sociology"]);
-
-	let majors: Set<string> = $state(new Set(["Math BS", "Sociology"]));
-
-	let course_ids_taken: Array<string> | undefined = $state();
-
 	const courseCatalog: Array<string> = course_list_full;
+
+	let majors: Set<string> = $state(new Set(["Math BS", "Sociology", "Computer Science BA"]));
+	let course_ids_taken: Set<string> = $state(new Set());
 
 	function getCourseIds() {
 		let courses_taken = [...year1courses[0], ...year1courses[1], ...year2courses[0], ...year2courses[1], ...year3courses[0], ...year3courses[1], ...year4courses[0], ...year4courses[1]];
-		let course_ids: Array<string> = [];
+		let course_ids: Set<string> = new Set();
 		courses_taken.forEach(name => {
 			let id = data.course_map[name];
-			if (id) course_ids.push(id);
+			if (id) course_ids.add(id);
 		})
 		course_ids_taken = course_ids;
-	}
-
-	function checkRequirements() {
-		
+		console.log(course_ids_taken);
 	}
 </script>
 
@@ -81,7 +76,7 @@
 				<CoreReqBox />
 				{#each majors as name}
 					{#if major_programs.has(name)}
-						<MajorReqBox majorName={name} major_data={data.programs.majors} />
+						<MajorReqBox major_name={name} major_data={data.majors[name]} credit_map={data.credit_map} taken={course_ids_taken}/>
 					{/if}
 				{/each}
 			</div>
