@@ -19,6 +19,7 @@ export const load: PageLoad = async ({ fetch }) => {
 
   let course_map: Record<string, any> = {};
   let credit_map: Record<string, any> = {};
+  let core_map: Record<string, any> = {};
 
   courses.forEach((course: any) => {
     const title = course["title"];
@@ -28,11 +29,10 @@ export const load: PageLoad = async ({ fetch }) => {
     if (course["credits"] !== undefined) {
       credit_map[course["id"]] = course["credits"];
     }
+    if (course["core-attribute"] !== undefined) {
+      core_map[title] = course["core-attribute"]
+    }
   });
 
-  const culturalDiversity = courses.filter((c: any) =>
-    (c.core_attribute || "").toLowerCase().includes("cultural diversity")
-  );
-
-	return { courses, majors, course_map, credit_map, culturalDiversity };
+	return { courses, majors, course_map, credit_map, core_map };
 };
