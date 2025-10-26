@@ -1,0 +1,12 @@
+{
+ "Art History Minor": {
+    "core_courses":["ARTH1101", "ARTH1102", "ARTH2212/ARTH2213/ARTH2250"],
+    "electives": ["ARTH2212","ARTH2213","ARTH2250","ARTH3025","ARTH4230","ARTH4427"],
+    "elective_credits": 3
+ },
+ "Economics": {
+    "core_courses":["ECON1101"],
+    "electives": [],
+    "elective_credits": 3
+ }
+}

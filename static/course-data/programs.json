@@ -7,7 +7,7 @@
             "id": "core",
             "label": "Core",
             "type": "all_of",
-            "courses": ["MATH1101", "MATH1102", "MATH2202", "MATH2203","MATH2216", "MATH3311", "MATH3312", "MATH3321", "MATH3322", "MATH4460"]
+            "courses": ["MATH1101", "MATH1102", "MATH2202/MATH2203","MATH2216", "MATH3311", "MATH3312", "MATH3321", "MATH3322", "MATH4460"]
         },
         {
             "id": "elec",
