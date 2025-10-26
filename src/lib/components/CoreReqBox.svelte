@@ -1,7 +1,16 @@
 <script lang="ts">
   let data = {
-    "Math" : [1, 1],
-    "History" : [2, 1]
+    "Arts" : [1, 0],
+    "Cultural Diversity" : [1, 0],
+   "History I" : [1, 0],
+   "History II" : [1, 0],
+   "Literature" : [1, 0],
+   "Mathematics" : [1, 0],
+   "Natural Science" : [2, 0],
+   "Philosophy" : [2, 0],
+   "Social Science" : [2, 0],
+   "Theology" : [2, 0],
+   "Writing" : [1, 0],
   }
 </script>
 
