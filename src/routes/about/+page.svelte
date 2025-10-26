@@ -7,20 +7,16 @@
 	<h1>About this app</h1>
 
 	<p>
-		This is a <a href="https://svelte.dev/docs/kit">SvelteKit</a> app. You can make your own by typing
-		the following into your command line and following the prompts:
-	</p>
-
-	<pre>npx sv create</pre>
-
-	<p>
-		The page you're looking at is purely static HTML, with no client-side interactivity needed.
-		Because of that, we don't need to load any JavaScript. Try viewing the page's source, or opening
-		the devtools network panel and reloading.
+		This cutting edge course planner helps BC students complete their courseload without worry.
 	</p>
 
 	<p>
-		The <a href="/sverdle">Sverdle</a> page illustrates SvelteKit's data loading and form handling. Try
-		using it with JavaScript disabled!
+		We employed Svelte, a JavaScript framework for building web applications. We used a JavaScript algorithm to webscrape the BC Course Catalog to fill .json files with our data.
 	</p>
+
+	<h1>About the authors</h1>
+	<p>
+		Connor Moquin and Colin McKay founded CJM Project. This is our second year participating in Hack the Heights.
+	</p>
+	<img src="/cjm.JPEG" alt="big motion" class="rounded shadow-md max-w-sm mx-auto mt-6" />
 </div>
