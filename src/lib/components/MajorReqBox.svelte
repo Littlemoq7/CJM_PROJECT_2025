@@ -36,8 +36,6 @@
             {#each core_courses as course}
               <tr>
                 <td class="border px-2 py-1">{course}</td>
-                <!-- <td class="border px-2 py-1">{value[0]}</td> -->
-                <!-- <td class="border px-2 py-1">{value[1] === 1 ? "Yes" : "No"}</td> -->
               </tr>
             {/each}
           {/if}
