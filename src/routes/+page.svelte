@@ -114,6 +114,7 @@
 					onclick={getCourseIds}
 					class="px-3 py-1.5 bg-gray-100 text-gray-800 border border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 transition"
 					aria-label="Update requirements"
+					style= "background-color: var(--color-theme-1); color: var(--color-bg-0)"
 				>
 					Update requirements
 				</button>
@@ -122,6 +123,7 @@
 					onclick={fillSchedule}
 					class="px-3 py-1.5 bg-gray-100 text-gray-800 border border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 transition"
 					aria-label="Fill schedule"
+					style= "background-color: var(--color-theme-1); color: var(--color-bg-0)"
 				>
 					Fill Schedule
 				</button>
