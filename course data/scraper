@@ -1,5 +1,6 @@
 (() => {
-  /* ===== Helpers ===== */
+  //took inspiration from ChatGPT
+    /* ===== Helpers ===== */
   const normCode = (t) => (t || "").replace(/\s|-/g, "").toUpperCase(); // "MATH 1100" -> "MATH1100"
   const onlyLetters = (t) => (t || "").replace(/[^A-Z]/g, "");
   const pickDigits = (t) => ((t || "").match(/\d+/) || [null])[0];
