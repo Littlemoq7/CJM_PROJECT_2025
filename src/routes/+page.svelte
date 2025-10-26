@@ -48,7 +48,7 @@
 	}
 
 	// Fills slot based on index, returns if successful
-	function fillSlot(index: number, course_id: string) : boolean {
+	function fillSlot(index: number, course_id: string): boolean {
 		// normalize course_id: if it contains a slash, take everything before the first slash
 		course_id = course_id.trim();
 		const slashIdx = course_id.indexOf('/');
@@ -60,60 +60,79 @@
 
 		// Year 1 (0–9)
 		if (index >= 0 && index < 5) {
-			if (year1courses[0][index] !== "") year1courses[0][index] = course_name;
-			return true;
+			if (year1courses[0][index] === "") {
+				year1courses[0][index] = course_name;
+				return true;
+			}
 		} else if (index >= 5 && index < 10) {
-			if (year1courses[1][index] !== "") year1courses[1][index - 5] = course_name;
-			return true;
+			if (year1courses[1][index - 5] === "") {
+				year1courses[1][index - 5] = course_name;
+				return true;
+			}
 		// Year 2 (10–19)
 		} else if (index >= 10 && index < 15) {
-			if (year2courses[0][index] !== "") year2courses[0][index - 10] = course_name;
-			return true;
+			if (year2courses[0][index - 10] === "") {
+				year2courses[0][index - 10] = course_name;
+				return true;
+			}
 		} else if (index >= 15 && index < 20) {
-			if (year2courses[1][index] !== "") year2courses[1][index - 15] = course_name;
-			return true;
+			if (year2courses[1][index - 15] === "") {
+				year2courses[1][index - 15] = course_name;
+				return true;
+			}
 		// Year 3 (20–29)
 		} else if (index >= 20 && index < 25) {
-			if (year3courses[0][index] !== "") year3courses[0][index - 20] = course_name;
-			return true;
+			if (year3courses[0][index - 20] === "") {
+				year3courses[0][index - 20] = course_name;
+				return true;
+			}
 		} else if (index >= 25 && index < 30) {
-			if (year3courses[1][index] !== "") year3courses[1][index - 25] = course_name;
-			return true;
+			if (year3courses[1][index - 25] === "") {
+				year3courses[1][index - 25] = course_name;
+				return true;
+			}
 		// Year 4 (30–39)
 		} else if (index >= 30 && index < 35) {
-			if (year4courses[0][index] !== "") year4courses[0][index - 30] = course_name;
-			return true;
+			if (year4courses[0][index - 30] === "") {
+				year4courses[0][index - 30] = course_name;
+				return true;
+			}
 		} else if (index >= 35 && index < 40) {
-			if (year1courses[1][index] !== "") year4courses[1][index - 35] = course_name;
-			return true;
-		} else {
-			return false;
+			if (year4courses[1][index - 35] === "") {
+				year4courses[1][index - 35] = course_name;
+				return true;
+			}
 		}
+
+		return false;
 	}
 
 	// Fills not taken classes into schedule
-	function fillSchedule () {
-		// Convert map entries into arrays
+	function fillSchedule() {
 		const lists = Array.from(not_taken.values()).map((arr) => [...arr]);
 
 		const result: string[] = [];
 		let added = true;
 
-		// Continue looping while at least one course remains
+		// Weave in courses from different majors
 		while (added) {
 			added = false;
 			for (const list of lists) {
 				if (list.length > 0) {
-					result.push(list.shift()!); // take one from each major
+					result.push(list.shift()!);
 					added = true;
 				}
 			}
 		}
 
-		// Fill all slots sequentially
-		for (let index = 0; index < 40 && result.length > 0; index++) {
-			const course = result.shift()!;
-			fillSlot(index, course);
+		// Try to place each course in the first available empty slot
+		let index = 0;
+		for (const course of result) {
+			let placed = false;
+			while (!placed && index < 40) {
+				placed = fillSlot(index, course);
+				index++;
+			}
 		}
 	}
 
