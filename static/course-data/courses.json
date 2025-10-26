@@ -9675,15 +9675,6 @@
     "core_attribute": "None"
   },
   {
-    "id": "MATH8806",
-    "subject": "MATH",
-    "number": "8806",
-    "title": "Algebra I",
-    "credits": 3,
-    "prerequisites_raw": "None",
-    "core_attribute": "None"
-  },
-  {
     "id": "MATH8808",
     "subject": "MATH",
     "number": "8808",
