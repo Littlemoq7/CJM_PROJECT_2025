@@ -9,13 +9,13 @@ export const load: PageLoad = async ({ fetch }) => {
 
 	const courses = await res1.json();
 
-  const res2 = await fetch('/course-data/programs.json');
+  const res2 = await fetch('/course-data/majors.json');
 
 	if (!res2.ok) {
-		throw new Error(`Failed to load /course-data/programs.json`);
+		throw new Error(`Failed to load /course-data/majors.json`);
 	}
 
-	const programs = await res2.json();
+	const majors = await res2.json();
 
   let course_map: Record<string, any> = {};
   let credit_map: Record<string, any> = {};
@@ -34,5 +34,5 @@ export const load: PageLoad = async ({ fetch }) => {
     (c.core_attribute || "").toLowerCase().includes("cultural diversity")
   );
 
-	return { courses, programs, course_map, credit_map, culturalDiversity };
+	return { courses, majors, course_map, credit_map, culturalDiversity };
 };
