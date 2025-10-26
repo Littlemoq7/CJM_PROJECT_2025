@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { onMount } from "svelte";
+	import { browser } from '$app/environment';
 	import CoreReqBox from '$lib/components/CoreReqBox.svelte';
 	import MajorReqBox from '$lib/components/MajorReqBox.svelte';
 	import YearPlan from '$lib/components/YearPlan.svelte';
@@ -42,7 +44,55 @@
 		})
 		course_ids_taken = course_ids;
 		console.log(course_ids_taken);
+		savePlan()
 	}
+
+	const STORAGE_KEY = "four_year_plan";
+
+	const cloneYear = (y: string[][]) => [ [...y[0]], [...y[1]] ];
+
+// helper: ensure shape is [[],[]] with 6 slots each
+const normalizeYear = (v: any): string[][] => {
+  if (!Array.isArray(v) || v.length !== 2) return [Array(6).fill(''), Array(6).fill('')];
+  const fix = (row: any) => (Array.isArray(row) ? [...row, '', '', '', '', '', ''].slice(0, 6) : Array(6).fill(''));
+  return [fix(v[0]), fix(v[1])];
+};
+	
+function savePlan() {
+  if (!browser) return; // ⬅️ SSR guard
+  try {
+    const dataToSave = {
+      year1: cloneYear(year1courses),
+      year2: cloneYear(year2courses),
+      year3: cloneYear(year3courses),
+      year4: cloneYear(year4courses)
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
+    // console.log('Saved plan to localStorage');
+  } catch (e) {
+    console.error('localStorage save failed:', e);
+  }
+}
+
+	function loadPlan() {
+  if (!browser) return; // ⬅️ SSR guard
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return;
+    const parsed = JSON.parse(saved);
+    if (parsed.year1) year1courses = normalizeYear(parsed.year1);
+    if (parsed.year2) year2courses = normalizeYear(parsed.year2);
+    if (parsed.year3) year3courses = normalizeYear(parsed.year3);
+    if (parsed.year4) year4courses = normalizeYear(parsed.year4);
+    // console.log('Loaded saved plan');
+  } catch (e) {
+    console.error('localStorage load failed:', e);
+  }
+}
+
+	onMount(() => {
+		loadPlan();
+	});
 </script>
 
 <svelte:head>
