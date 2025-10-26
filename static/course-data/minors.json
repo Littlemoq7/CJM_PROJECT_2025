@@ -4,9 +4,14 @@
     "electives": ["ARTH2212","ARTH2213","ARTH2250","ARTH3025","ARTH4230","ARTH4427"],
     "elective_credits": 3
  },
- "Economics": {
-    "core_courses":["ECON1101"],
-    "electives": [],
-    "elective_credits": 3
+ "Economics Minor": {
+    "core_courses":["ECON1101","ECON1151","ECON2201","ECON2202","ECON2228"],
+    "electives": ["ECON2260","ECON2269","ECON2277","ECON2636","ECON3305","ECON3308","ECON3317","ECON3356","ECON3361","ECON3379"],
+    "elective_credits": 6
+ },
+ "African and African Diaspora Studies Minor": {
+    "core_courses":["AADS1110","AADS6600"],
+    "electives": ["AADS1226","AADS1114","AADS1137","AADS1139","AADS1770","AADS2204","AADS2265","AADS2278","AADS2331","AADS2400","AADS2442","AADS2600","AADS3400","AADS4805"],
+    "elective_credits": 12
  }
 }
