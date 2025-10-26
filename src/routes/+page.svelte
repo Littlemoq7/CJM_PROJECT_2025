@@ -29,6 +29,8 @@
 		"Class 6" : [4, 9]
 	}
 
+	const courseCatalog: Array<string> = ["MATH 2203", "MATH 4416", "CSCI 1002", "Foo1", "Foo2", "Foo3", "Foo4", "Foo5", "Foo6", "Foo7", "Foo8", "Foo9", "Foo10", "Foo11", "Foo12"];
+
 </script>
 
 <svelte:head>
@@ -59,12 +61,12 @@
 			<div class="w-full border">
 				<h3 class="text-center">Course Planner</h3>
 			</div>
-			
+
 			<div class="flex flex-col gap-4 overflow-y-auto max-h-[80vh]">
-				<YearPlan yearNum=1 bind:courses={year1courses}/>
-				<YearPlan yearNum=2 bind:courses={year2courses}/>
-				<YearPlan yearNum=3 bind:courses={year3courses}/>
-				<YearPlan yearNum=4 bind:courses={year4courses}/>
+				<YearPlan yearNum=1 bind:courses={year1courses} courseCatalog={courseCatalog}/>
+				<YearPlan yearNum=2 bind:courses={year2courses} courseCatalog={courseCatalog}/>
+				<YearPlan yearNum=3 bind:courses={year3courses} courseCatalog={courseCatalog}/>
+				<YearPlan yearNum=4 bind:courses={year4courses} courseCatalog={courseCatalog}/>
 			</div>
 		</div>
 
