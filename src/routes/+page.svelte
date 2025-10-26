@@ -3,8 +3,12 @@
 	import MajorReqBox from '$lib/components/MajorReqBox.svelte';
 	import YearPlan from '$lib/components/YearPlan.svelte';
 
-	let { courses = [] }: { courses?: any[] } = $props();
-  // const courses = data.courses ?? [];
+	let { data } = $props();
+
+	let course_list_full: Array<string> = [];
+	data.courses.forEach((element: any) => {
+		course_list_full.push(element.title);
+	});
 
 	let year1courses = $state([
 		Array(6).fill(""),
@@ -23,16 +27,7 @@
 		Array(6).fill("")
 	]);
 
-	let classData: Record<string, [string | number, string | number]> = {
-		"Class 1" : [3, 5],
-		"Class 2" : [4, 9],
-		"Class 3" : [4, 9],
-		"Class 4" : [4, 9],
-		"Class 5" : [4, 9],
-		"Class 6" : [4, 9]
-	}
-
-	const courseCatalog: Array<string> = ["MATH 2203", "MATH 4416", "CSCI 1002"];
+	const courseCatalog: Array<string> = course_list_full;
 
 </script>
 
@@ -54,8 +49,7 @@
 			</div>
 			<div class="flex flex-col gap-2 overflow-y-auto max-h-[80vh]">
 				<CoreReqBox />
-				<MajorReqBox majorName="Math" data={classData} />
-				<MajorReqBox majorName="Math" data={classData} />
+				<MajorReqBox majorName="Math BS" major_data={data.programs.majors} />
 			</div>
 		</div>
 
