@@ -3,6 +3,9 @@
 	import MajorReqBox from '$lib/components/MajorReqBox.svelte';
 	import YearPlan from '$lib/components/YearPlan.svelte';
 
+	let { courses = [] }: { courses?: any[] } = $props();
+  // const courses = data.courses ?? [];
+
 	let year1courses = $state([
 		Array(6).fill(""),
 		Array(6).fill("")
@@ -29,7 +32,7 @@
 		"Class 6" : [4, 9]
 	}
 
-	const courseCatalog: Array<string> = ["MATH 2203", "MATH 4416", "CSCI 1002", "Foo1", "Foo2", "Foo3", "Foo4", "Foo5", "Foo6", "Foo7", "Foo8", "Foo9", "Foo10", "Foo11", "Foo12"];
+	const courseCatalog: Array<string> = ["MATH 2203", "MATH 4416", "CSCI 1002"];
 
 </script>
 

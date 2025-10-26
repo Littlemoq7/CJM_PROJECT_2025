@@ -1,3 +1,12 @@
-// since there's no dynamic data here, we can prerender
-// it so that it gets served as a static asset in production
-export const prerender = true;
+import type { PageLoad } from './$types';
+
+export const load: PageLoad = async ({ fetch }) => {
+	const res = await fetch('/course-data/courses.json');
+
+	if (!res.ok) {
+		throw new Error(`Failed to load /course-data/courses.json`);
+	}
+
+	const courses = await res.json();
+	return { courses };
+};
