@@ -27,8 +27,27 @@
 		Array(6).fill("")
 	]);
 
+	const major_programs = new Set(["Math BS", "Computer Science BA", "Sociology"]);
+
+	let majors: Set<string> = $state(new Set(["Math BS", "Sociology"]));
+
+	let course_ids_taken: Array<string> | undefined = $state();
+
 	const courseCatalog: Array<string> = course_list_full;
 
+	function getCourseIds() {
+		let courses_taken = [...year1courses[0], ...year1courses[1], ...year2courses[0], ...year2courses[1], ...year3courses[0], ...year3courses[1], ...year4courses[0], ...year4courses[1]];
+		let course_ids: Array<string> = [];
+		courses_taken.forEach(name => {
+			let id = data.course_map[name];
+			if (id) course_ids.push(id);
+		})
+		course_ids_taken = course_ids;
+	}
+
+	function checkRequirements() {
+		
+	}
 </script>
 
 <svelte:head>
@@ -36,25 +55,40 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<div class="bg-red-200 w-full h-full">
+<div class="w-full h-full">
 
-	<h1>Schedule Planner</h1>
+	<div class="w-[93%] flex justify-between mx-auto">
+		<div>
+			<h2>Requirements and Four Year Plan</h2>
+		</div>
+		<div class="flex">
+			<div class="flex items-center">
+				<button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" onclick={getCourseIds}>
+					Update Requirements
+				</button>
+			</div>
+		</div>
+	</div>
 
 	<div class="flex justify-evenly">
 
 		<!-- Contains requirement boxes -->
-		<div class="w-[200px] md:w-[250px] lg:w-[350px] bg-amber-200">
+		<div class="w-[200px] md:w-[250px] lg:w-[350px]">
 			<div class="w-full border">
 				<h3 class="text-center">My Requirements</h3>
 			</div>
 			<div class="flex flex-col gap-2 overflow-y-auto max-h-[80vh]">
 				<CoreReqBox />
-				<MajorReqBox majorName="Math BS" major_data={data.programs.majors} />
+				{#each majors as name}
+					{#if major_programs.has(name)}
+						<MajorReqBox majorName={name} major_data={data.programs.majors} />
+					{/if}
+				{/each}
 			</div>
 		</div>
 
 		<!-- Contains four year plan -->
-		<div class="bg-amber-200 rounded w-[300px] md:w-[600px] lg:w-[900px]">
+		<div class="rounded w-[300px] md:w-[600px] lg:w-[900px]">
 			<div class="w-full border">
 				<h3 class="text-center">Course Planner</h3>
 			</div>
@@ -70,11 +104,3 @@
 	</div>
 
 </div>
-
-<style>
-
-	h1 {
-		width: 100%;
-	}
-
-</style>

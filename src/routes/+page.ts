@@ -17,9 +17,22 @@ export const load: PageLoad = async ({ fetch }) => {
 
 	const programs = await res2.json();
 
+  let course_map: Record<string, any> = {};
+  let credit_map: Record<string, any> = {};
+
+  courses.forEach((course: any) => {
+    const title = course["title"];
+    if (typeof title === "string" && course["id"] !== undefined) {
+      course_map[title] = course["id"];
+    }
+    if (course["credits"] !== undefined) {
+      credit_map[course["id"]] = course["credits"];
+    }
+  });
+
   const culturalDiversity = courses.filter((c: any) =>
     (c.core_attribute || "").toLowerCase().includes("cultural diversity")
   );
 
-	return { courses, programs, culturalDiversity };
+	return { courses, programs, course_map, credit_map, culturalDiversity };
 };
