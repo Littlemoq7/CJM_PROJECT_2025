@@ -16,6 +16,7 @@
     "Writing" : 1
   }
 
+  // Checks if core req has been satisfied by a taken class
   function checkCore(req: string) : number {
     let count = 0;
     taken.forEach((course_id: string) => {

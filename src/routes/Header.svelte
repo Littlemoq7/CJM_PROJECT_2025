@@ -1,18 +1,26 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import logo from '$lib/images/svelte-logo.svg';
+	import logo from '$lib/images/Boston_College_Eagles_logo.svg.png';
 	import github from '$lib/images/github.svg';
 </script>
 
 <header>
-	<!-- Top left icon -->
-	<!-- <div class="corner">
-		<a href="https://svelte.dev/docs/kit">
-			<img src={logo} alt="SvelteKit" />
+	<div class="corner">
+		<a href="https://www.bc.edu/content/bc-web/academics.html">
+			<img src={logo} alt="BC Logo" />
 		</a>
-	</div> -->
+	</div>
 
-	<nav class="mx-auto">
+	<div class="brand" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;margin:0 1rem;">
+		<h1 style="margin:0;font-size:2rem;font-weight:800;color:var(--color-text);letter-spacing:0.08em;text-transform:uppercase;">
+			Eagle Planning
+		</h1>
+		<span style="font-size:1rem;font-weight:700;color:var(--color-theme-1);text-transform:uppercase;opacity:0.9;">
+			Course Planner
+		</span>
+	</div>
+
+	<nav class="absolute ml-20">
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
 		</svg>
@@ -29,12 +37,11 @@
 		</svg>
 	</nav>
 
-	<!-- Top left icon -->
-	<!-- <div class="corner">
+	<div class="corner">
 		<a href="https://github.com/sveltejs/kit">
 			<img src={github} alt="GitHub" />
 		</a>
-	</div> -->
+	</div>
 </header>
 
 <style>

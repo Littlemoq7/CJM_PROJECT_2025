@@ -1,5 +1,5 @@
 <script lang="ts">
-  let { major_name, major_data, credit_map, taken, not_taken = $bindable() } = $props();
+  let { major_name, major_data, credit_map, taken, not_taken = $bindable(), majors = $bindable() } = $props();
 
   // Gets credit value for courses with multiple options
   function getCredits(course_id: string) : number {
@@ -17,23 +17,22 @@
     return 0;
   }
 
-  function hasTaken(course_id: string) : boolean {
-    let not_done = [];
-    let current_not;
-    if (course_id.includes('/')) {
-      const parts = course_id.split('/').map(p => p.trim());
-      for (const p of parts) {
-        if (taken.has(p)) return true;
-      }
-      current_not = parts[0];
-    } else {
-      if (taken.has(course_id)) return true;
-      current_not = course_id;
+  function hasTaken(course_id: string): boolean {
+    if (course_id.includes("/")) {
+      const parts = course_id.split("/").map((p) => p.trim());
+      return parts.some((p) => taken.has(p));
     }
-    not_done.push(current_not);
-    return false;
+    return taken.has(course_id);
   }
 
+  $effect(() => {
+    if (major_data && major_data["core_courses"]) {
+      not_taken = major_data["core_courses"].filter((course: string) => !hasTaken(course));
+      console.log(not_taken);
+    }
+  });
+
+  // Checks for coreqs and electives
   function checkExtraCredits(section: string) : number {
     let count = 0;
     let valid_courses = new Set(major_data[section]);
@@ -46,12 +45,24 @@
     return count;
   }
 
+  function removeMajor() {
+    majors.delete(major_name);
+    majors = new Set(majors);
+  }
+
 </script>
 
 <main>
   <div class="border rounded p-2">
-    <div class="w-full pt-1 pb-2">
-      <h2 class="text-center">{major_name}</h2>
+    <div class="w-full pt-1 pb-2 flex justify-center items-center relative">
+      <h2 class="text-center text-lg font-semibold flex-1">{major_name}</h2>
+      <button
+        class="absolute right-2 top-1 text-gray-500 hover:text-red-600 font-bold text-lg"
+        onclick={removeMajor}
+        aria-label="Remove Major"
+      >
+        ×
+      </button>
     </div>
     <div class="overflow-auto">
       <table class="min-w-full border-collapse">

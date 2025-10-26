@@ -106,7 +106,7 @@
 
 <div class="w-full h-full">
 
-	<div class="w-full">
+	<div class="w-full mb-4">
 		<div class="flex justify-end">
 			<div class="flex items-center">
 				<button
@@ -140,7 +140,7 @@
 				<CoreReqBox taken={course_ids_taken} core_map={data.core_map}/>
 				{#each majors as name}
 					{#if major_programs.has(name)}
-						<MajorReqBox major_name={name} major_data={data.majors[name]} credit_map={data.credit_map} taken={course_ids_taken} not_taken={not_taken}/>
+						<MajorReqBox major_name={name} major_data={data.majors[name]} credit_map={data.credit_map} taken={course_ids_taken} not_taken={not_taken} bind:majors/>
 					{/if}
 				{/each}
 			</div>

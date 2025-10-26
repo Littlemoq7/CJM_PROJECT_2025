@@ -11,7 +11,7 @@
 	</p>
 
 	<p>
-		We employed Svelte, a JavaScript framework for building web applications. We used a JavaScript algorithm to webscrape the BC Course Catalog to fill .json files with our data.
+		We employed Svelte, a JavaScript framework for building web applications, as well as tailwind. We also used a JavaScript algorithm to webscrape the BC Course Catalog and fill .json files with course and program data.
 	</p>
 
 	<h1>About the authors</h1>
